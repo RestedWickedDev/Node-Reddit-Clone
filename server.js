@@ -18,7 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 // Set db
 require('./data/reddit-db');
 
+// Controllers
 require('./controllers/posts')(app);
+require('./controllers/comments.js')(app);
 
 
 // Start Server
