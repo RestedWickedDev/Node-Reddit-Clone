@@ -20,13 +20,7 @@ require('./data/reddit-db');
 
 require('./controllers/posts')(app);
 
-// Routes
-app.get('/', (req, res) => {
-    res.render('posts-index');
-  });
-app.get('/posts/new', (req, res) => {
-    res.render('posts-new');
-  });
+
   
 
 // Start Server
