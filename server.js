@@ -12,16 +12,17 @@ const app = express();
 // Middleware
 const exphbs  = require('express-handlebars');
 
+app.use(express.static('public'));
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
 app.use(checkAuth);
+
 
 
 // Set db
@@ -31,7 +32,7 @@ require('./data/reddit-db');
 require('./controllers/posts')(app);
 require('./controllers/comments.js')(app);
 require('./controllers/auth.js')(app);
-
+require('./controllers/replies.js')(app);
 
 // Start Server
 
