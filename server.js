@@ -1,6 +1,9 @@
+// Dotenv
+require('dotenv').config();
+
 // Require Libraries
 const express = require('express');
-
+const cookieParser = require('cookie-parser');
 
 // App Setup
 const app = express();
@@ -15,12 +18,15 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(cookieParser());
+
 // Set db
 require('./data/reddit-db');
 
 // Controllers
 require('./controllers/posts')(app);
 require('./controllers/comments.js')(app);
+require('./controllers/auth.js')(app);
 
 
 // Start Server
