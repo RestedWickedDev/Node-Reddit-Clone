@@ -4,6 +4,7 @@ require('dotenv').config();
 // Require Libraries
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const checkAuth = require('./middleware/checkAuth');
 
 // App Setup
 const app = express();
@@ -19,6 +20,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
+
+app.use(checkAuth);
+
 
 // Set db
 require('./data/reddit-db');
